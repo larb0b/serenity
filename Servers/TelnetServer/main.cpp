@@ -69,7 +69,7 @@ static void run_command(int ptm_fd, String command)
             args[2] = command.characters();
         }
         const char* envs[] = { "TERM=xterm", "PATH=/bin:/usr/bin:/usr/local/bin", nullptr };
-        rc = execve("/bin/Shell", const_cast<char**>(args), const_cast<char**>(envs));
+        rc = execve("/usr/bin/nyancat", const_cast<char**>(args), const_cast<char**>(envs));
         if (rc < 0) {
             perror("execve");
             exit(1);
