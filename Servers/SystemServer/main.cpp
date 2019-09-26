@@ -15,8 +15,7 @@ void start_process(const String& program, const Vector<String>& arguments, int p
     pid_t pid = 0;
 
     while (true) {
-        dbg() << "Forking for " << program << "...";
-        int pid = fork();
+        dbg() << "Forking for " << program << "..."; int pid = fork();
         if (pid < 0) {
             dbg() << "Fork " << program << " failed! " << strerror(errno);
             continue;
@@ -95,17 +94,18 @@ int main(int, char**)
     start_process("/bin/TTYServer", { "tty2" }, highest_prio, "/dev/tty2");
     start_process("/bin/TTYServer", { "tty3" }, highest_prio, "/dev/tty3");
 #endif
+    start_process("/bin/TelnetServer", {}, highest_prio);
 
     // Drop privileges.
     setgid(100);
     setuid(100);
 
     start_process("/bin/LookupServer", {}, lowest_prio);
-    start_process("/bin/WindowServer", {}, highest_prio);
-    start_process("/bin/AudioServer", {}, highest_prio);
-    start_process("/bin/Taskbar", {}, highest_prio);
-    start_process("/bin/Terminal", {}, highest_prio - 1);
-    start_process("/bin/Launcher", {}, highest_prio);
+//    start_process("/bin/WindowServer", {}, highest_prio);
+//    start_process("/bin/AudioServer", {}, highest_prio);
+//    start_process("/bin/Taskbar", {}, highest_prio);
+//    start_process("/bin/Terminal", {}, highest_prio - 1);
+//    start_process("/bin/Launcher", {}, highest_prio);
 
     // This won't return if we're in test mode.
     check_for_test_mode();
