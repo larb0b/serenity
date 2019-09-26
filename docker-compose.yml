@@ -1,0 +1,9 @@
+version: '2.3'
+services:
+    nyanserver:
+        build: .
+        ports:
+            - "8823:8823"
+        privileged: true
+        device_cgroup_rules:
+            - 'b 7:* rmw'
