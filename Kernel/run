@@ -63,6 +63,7 @@ else
         -append "${SERENITY_KERNEL_CMDLINE}" \
         -hda _disk_image \
         -soundhw pcspk \
-        -soundhw sb16
+        -soundhw sb16 \
+        -display none
 fi
 
