@@ -4,6 +4,8 @@
 !Makefile
 !LICENSE
 !Base/**
+!Dockerfile
+!docker-compose.yml
 
 *.o
 *.ao
